@@ -44,8 +44,8 @@ public class ListFactoryTest {
      * @return
      */
     private IListFactory createInstance() {
-        return new ListFactory();
-        // return new ListFactoryImpl();
+        // return new ListFactory();
+        return new ListFactoryImpl();
     }
 
     /* 以降が検証用のコード */
@@ -173,9 +173,8 @@ public class ListFactoryTest {
         // 要素数の確認
         assertThatWrapper(actual.size(), expected.size());
 
-        // リストの要素が異なるインスタンスであり、値が同じ事を確認する
+        // リストの要素の値が同じ事を確認する
         for (int i = 0; i < actual.size(); i++) {
-            assertNotSame(actual.get(i), expected.get(i));
             assertThatWrapper(actual.get(i), expected.get(i));
         }
     }
@@ -203,9 +202,64 @@ public class ListFactoryTest {
         // 要素数の確認
         assertThatWrapper(actual.size(), expected.size());
 
-        // リストの要素が異なるインスタンスであり、値が同じ事を確認する
+        // リストの要素の値が同じ事を確認する
         for (int i = 0; i < actual.size(); i++) {
-            assertNotSame(actual.get(i), expected.get(i));
+            assertThatWrapper(actual.get(i), expected.get(i));
+        }
+    }
+
+    @Test
+    public void findSameStringFirstMatch() {
+        IListFactory listFactory = createInstance();
+
+        /* 最初の要素のみがマッチするパターン */
+        List<String> listA = new ArrayList<String>();
+        listA.add("TEST00");
+        listA.add("TEST01");
+
+        List<String> listB = new ArrayList<String>();
+        listB.add("TEST00");
+        listB.add("TEST02");
+
+        List<String> actual = listFactory.findSameString(listA, listB);
+
+        List<String> expected = new ArrayList<String>();
+        expected.add("TEST00");
+
+        // 要素数の確認
+        assertThatWrapper(actual.size(), expected.size());
+
+        // リストの要素の値が同じ事を確認する
+        for (int i = 0; i < actual.size(); i++) {
+            assertThatWrapper(actual.get(i), expected.get(i));
+        }
+    }
+
+    @Test
+    public void findSameStringLastMatch() {
+        IListFactory listFactory = createInstance();
+
+        /* 最後の要素のみがマッチするパターン */
+        List<String> listA = new ArrayList<String>();
+        listA.add("TEST01");
+        listA.add("TEST03");
+        listA.add("TEST99");
+
+        List<String> listB = new ArrayList<String>();
+        listB.add("TEST02");
+        listB.add("TEST04");
+        listB.add("TEST99");
+
+        List<String> actual = listFactory.findSameString(listA, listB);
+
+        List<String> expected = new ArrayList<String>();
+        expected.add("TEST99");
+
+        // 要素数の確認
+        assertThatWrapper(actual.size(), expected.size());
+
+        // リストの要素の値が同じ事を確認する
+        for (int i = 0; i < actual.size(); i++) {
             assertThatWrapper(actual.get(i), expected.get(i));
         }
     }
@@ -237,98 +291,6 @@ public class ListFactoryTest {
 
         /* 空リスト */
         List<String> actual3 = listFactory.findSameString(
-                new ArrayList<String>(), listB);
-
-        // 要素数の確認
-        assertThatWrapper(actual3.size(), 0);
-    }
-
-    @Test
-    public void findSameStringFast2by3() {
-        IListFactory listFactory = createInstance();
-
-        List<String> listA = createSampleList(10, 2);
-        List<String> listB = createSampleList(10, 3);
-
-        Collections.sort(listA);
-        Collections.sort(listB);
-
-        List<String> actual = listFactory.findSameStringFast(listA, listB);
-
-        List<String> expected = new ArrayList<String>();
-        expected.add("TEST6");
-        expected.add("TEST12");
-        expected.add("TEST18");
-
-        Collections.sort(expected); // Stringの昇順でソートしておかないと直感的なソート順とのgapにはまる
-
-        // 要素数の確認
-        assertThatWrapper(actual.size(), expected.size());
-
-        // リストの要素が異なるインスタンスであり、値が同じ事を確認する
-        for (int i = 0; i < actual.size(); i++) {
-            assertNotSame(actual.get(i), expected.get(i));
-            assertThatWrapper(actual.get(i), expected.get(i));
-        }
-    }
-
-    @Test
-    public void findSameStringFast3by5() {
-        IListFactory listFactory = createInstance();
-
-        List<String> listA = createSampleList(20, 3);
-        List<String> listB = createSampleList(15, 5);
-
-        Collections.sort(listA);
-        Collections.sort(listB);
-
-        List<String> actual = listFactory.findSameStringFast(listA, listB);
-
-        List<String> expected = new ArrayList<String>();
-        expected.add("TEST15");
-        expected.add("TEST30");
-        expected.add("TEST45");
-        expected.add("TEST60");
-
-        Collections.sort(expected); // Stringの昇順でソートしておかないと直感的なソート順とのgapにはまる
-
-        // 要素数の確認
-        assertThatWrapper(actual.size(), expected.size());
-
-        // リストの要素が異なるインスタンスであり、値が同じ事を確認する
-        for (int i = 0; i < actual.size(); i++) {
-            assertNotSame(actual.get(i), expected.get(i));
-            assertThatWrapper(actual.get(i), expected.get(i));
-        }
-    }
-
-    /**
-     * 結果が空リストになるケース。
-     */
-    @Test
-    public void findSameStringFastNoResult() {
-        IListFactory listFactory = createInstance();
-
-        List<String> listA = createSampleList(5, 3);
-        List<String> listB = createSampleList(10, 7);
-
-        Collections.sort(listA);
-        Collections.sort(listB);
-
-        List<String> actual = listFactory.findSameStringFast(listA, listB);
-
-        // 要素数の確認
-        assertThatWrapper(actual.size(), 0);
-
-        /* 空リスト */
-        List<String> actual2 = listFactory.findSameStringFast(listA,
-                new ArrayList<String>());
-
-        // 要素数の確認
-        assertThatWrapper(actual2.size(), 0);
-
-        /* 空リスト */
-        List<String> actual3 = listFactory.findSameStringFast(
                 new ArrayList<String>(), listB);
 
         // 要素数の確認

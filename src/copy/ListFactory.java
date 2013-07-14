@@ -36,19 +36,17 @@ public class ListFactory implements IListFactory {
      * @param toIndex
      * @return
      */
-    public List<MutableEntity> createPartialList(List<MutableEntity> list, int toIndex) {
+    public List<MutableEntity> createPartialList(List<MutableEntity> list,
+            int toIndex) {
         return null;
     }
 
     /**
-     * 渡された2つの文字列リストから共通の文字列を抽出して返す。
-     * 返される文字列リストは昇順でソートされている。
-     * 共通の文字列が存在しない場合は空のリストを生成して返す。
-     * なお、渡されるリストは両方とも昇順にソートされている。
+     * 渡された2つの文字列リストから共通の文字列を抽出して返す。 返される文字列リストは昇順でソートされている。
+     * 共通の文字列が存在しない場合は空のリストを生成して返す。 なお、渡されるリストは両方とも昇順にソートされている。
      * 
-     * ex.
-     * listA: [a, b, c, f, g, i, j]、listB: [b, d, g, h, i]
-     * -> return [b, g, i]
+     * ex. listA: [a, b, c, f, g, i, j]、listB: [b, d, g, h, i] -> return [b, g,
+     * i]
      * 
      * ※処理速度を考慮しなければ7行以内で実装可能
      * 
@@ -57,10 +55,6 @@ public class ListFactory implements IListFactory {
      * @return
      */
     public List<String> findSameString(List<String> listA, List<String> listB) {
-        return null;
-    }
-
-    public List<String> findSameStringFast(List<String> listA, List<String> listB) {
         return null;
     }
 }

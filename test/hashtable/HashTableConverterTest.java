@@ -9,10 +9,6 @@ import org.junit.*;
 
 public class HashTableConverterTest {
 
-    public HashTableConverterTest() {
-        //
-    }
-
     /**
      * assertThatのユーティリティラッパーメソッド。
      * 
