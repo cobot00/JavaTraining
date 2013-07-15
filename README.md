@@ -8,6 +8,7 @@ JUnitのテストを解として、実装を完了させる作業を繰り返す
 
 * **calculate**  
   実装対象：EasyCalculator.java  
+  テスト：EasyCalculatorTest.java  
   実装例：EasyCalculatorImpl.java   
   
   四則演算の実装です。  
@@ -16,6 +17,7 @@ JUnitのテストを解として、実装を完了させる作業を繰り返す
 
 * **fizzbuzz**  
   実装対象：FizzBuzz.java  
+  テスト：FizzBuzzTest.java  
   実装例：FizzBuzzImpl.java  
   
   いわゆるFizzBuzz問題です。  
@@ -24,6 +26,7 @@ JUnitのテストを解として、実装を完了させる作業を繰り返す
 
 * **copy**  
   実装対象：ListFactory.java  
+  テスト：ListFactoryTest.java  
   実装例：ListFactoryImpl.java  
   
   リストの複製、およびインスタンスの識別を目標としています。  
@@ -31,6 +34,7 @@ JUnitのテストを解として、実装を完了させる作業を繰り返す
 
 * **hashtable**  
   実装対象：HashTableConverter.java  
+  テスト：HashTableConverterTest.java  
   実装例：HashTableConverterImpl.java  
   
   ListからMapを生成します。  
@@ -39,7 +43,8 @@ JUnitのテストを解として、実装を完了させる作業を繰り返す
 
 
 * **date**  
-  実装対象：EasyDate.java  
+  実装対象：EasyDateTest.java  
+  テスト：FizzBuzzTest.java  
   実装例：EasyDateImpl.java  
   
   Immutableな日付クラスの実装です。  
