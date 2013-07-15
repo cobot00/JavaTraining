@@ -44,7 +44,7 @@ JUnitのテストを解として、実装を完了させる作業を繰り返す
 
 * **date**  
   実装対象：EasyDateTest.java  
-  テスト：FizzBuzzTest.java  
+  テスト：EasyDateTest.java  
   実装例：EasyDateImpl.java  
   
   Immutableな日付クラスの実装です。  
