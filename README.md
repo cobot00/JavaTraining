@@ -26,7 +26,7 @@ JUnitのテストを解として、実装を完了させる作業を繰り返す
   実装対象：ListFactory.java  
   実装例：ListFactoryImpl.java  
   
-  リストの複製、およびインスタンスの識別になります。  
+  リストの複製、およびインスタンスの識別を目標としています。  
   
 
 * **hashtable**  
@@ -34,6 +34,8 @@ JUnitのテストを解として、実装を完了させる作業を繰り返す
   実装例：HashTableConverterImpl.java  
   
   ListからMapを生成します。  
+  なお、ここでの「hashtable」はコレクション実装におけるハッシュテーブルを指し、  
+  Hashtableクラスの使用を推奨するものではありません。  
 
 
 * **date**  
